@@ -7,11 +7,13 @@ This repository contains the R scripts for running the experiments for importanc
 [] Step 3: set up subfolders fro storing samples and results
 
 Suggested structures:
-./utils 
+./utils/
+
 ./data_EUR/
           |__OCS/
           |__AGB/
 --> for storing the intermediate results (training and test samples)
+
 ./resu_EUR/
           |__OCS/
                 |_CLUST1/
