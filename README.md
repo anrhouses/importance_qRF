@@ -20,6 +20,8 @@ Suggested structures:
 
 ./resu_EUR/
 
+--> for storing the CRPS results after applying the random iterations
+
           |__OCS/
 
                 |_CLUST1/
@@ -31,13 +33,12 @@ Suggested structures:
           |__AGB
           
                 |_CLUST1/
-          
                 |_NCLUST/
-               
                 |_RAND/   
                 
---> for storing the CRPS results after applying the random iterations
---> for storing the PAWN sensitivity analysis results in the subfolders **CLUST1** (for experiments with one cluster), **NCLUST** (for experiments with mulitple clusters), and **RAND** (for experiments with randomly distributed observations)
+--> for storing the PAWN sensitivity analysis results in the subfolders **CLUST1** (for experiments with one cluster), 
+
+**NCLUST** (for experiments with mulitple clusters), and **RAND** (for experiments with randomly distributed observations)
 
 The necessary R packages are:
 - [ranger](https://doi.org/10.32614/CRAN.package.ranger) for training qRF models
