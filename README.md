@@ -17,9 +17,13 @@ Suggested structures:
 
 --> for storing the CRPS results after applying the random iterations
 -- resu_EUR
+
           |--OCS
+          
                 |--CLUST1
+                
                 |--NCLUST
+                
                 |--RAND     
                 
           |__AGB
