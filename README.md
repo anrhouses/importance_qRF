@@ -4,8 +4,9 @@ This repository contains the R scripts for running the experiments for importanc
 
 - [] **Step 1**: dowload the *AGB* and *OCS* datasets from [de Bruin et al., 2022](https://doi.org/10.5281/zenodo.6513429).
 - [] **Step 2**: unzip utils folder (with scripts for extraction and generation of the spatial data, SIC and random)
-- [] **Step 3**: set up subfolders fro storing samples and results
+- [] **Step 3**: set up subfolders for storing samples and results
 
+____________________________________________________________________________
 Suggested structures:
 
 /utils
@@ -13,6 +14,7 @@ Suggested structures:
 /data_EUR/OCS --> for storing the intermediate results (training and test samples)
 
 /resu_EUR/OCS --> for storing the PAWN sensitivity analysis for *OCS* results in the subfolders **CLUST1** (for experiments with one cluster), **NCLUST** (for experiments with mulitple clusters), and **RAND** (for experiments with randomly distributed observations)
+____________________________________________________________________________
 
 - [] **Step 4**: run the R scripts where
   - *run_PAWN_RAND_part1.R*  generate randomly distributed samples and compute the CRPS values
