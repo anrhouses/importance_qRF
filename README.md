@@ -16,11 +16,11 @@ Suggested structures:
 --> for storing the intermediate results (training and test samples)
 
 --> for storing the CRPS results after applying the random iterations
-_resu_EUR
-          |__OCS/
-                |_CLUST1/
-                |_NCLUST/
-                |_RAND/     
+-- resu_EUR
+          |--OCS
+                |--CLUST1
+                |--NCLUST
+                |--RAND     
                 
           |__AGB
                 |_CLUST1/
