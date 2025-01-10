@@ -8,8 +8,8 @@ This repository contains the R scripts for running the experiments for importanc
 
 Suggested structures:
 
-|_utils
-|_data_EUR
+  |_utils
+  |_data_EUR
           |__OCS/
           |__AGB/
           
