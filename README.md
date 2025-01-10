@@ -12,6 +12,7 @@ Suggested structures:
 |_data_EUR
           |__OCS/
           |__AGB/
+          
 --> for storing the intermediate results (training and test samples)
 
 ./resu_EUR/
