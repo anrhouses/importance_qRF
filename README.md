@@ -9,12 +9,14 @@ This repository contains the R scripts for running the experiments for importanc
 Suggested structures:
 
 ./utils/
+
 ./data_EUR/
           |__OCS/
           |__AGB/
 --> for storing the intermediate results (training and test samples)
 
 ./resu_EUR/
+
 --> for storing the CRPS results after applying the random iterations
           |__OCS/
                 |_CLUST1/
@@ -24,6 +26,7 @@ Suggested structures:
                 |_CLUST1/
                 |_NCLUST/
                 |_RAND/   
+                
 --> for storing the PAWN sensitivity analysis results in the subfolders **CLUST1** (for experiments with one cluster), **NCLUST** (for experiments with mulitple clusters), and **RAND** (for experiments with randomly distributed observations)
 
 The necessary R packages are:
