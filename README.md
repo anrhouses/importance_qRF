@@ -17,14 +17,14 @@ Suggested structures:
 ____________________________________________________________________________
 
 - [] **Step 4**: run the R scripts where
-  - *run_PAWN_RAND_part1.R*  generate randomly distributed samples and compute the CRPS values
-  - *run_PAWN_RAND_part2.R*  compute the PAWN sensitivity analysis results from the CRPS values
-  - *run_PAWN_oneCluster_part1.R*  generate SIC samples with one cluster and compute the CRPS values
-  - *run_PAWN_oneCluster_part2.R*  compute the PAWN sensitivity analysis results from the CRPS values
-  - *run_PAWN_multiCluster_part1.R*  generate SIC samples with multiple clusters and compute the CRPS values
-  - *run_PAWN_multiCluster_part2.R*  compute the PAWN sensitivity analysis results from the CRPS values
+  - *run_PAWN_RAND_part1.R*  generates randomly distributed samples and compute the CRPS values
+  - *run_PAWN_RAND_part2.R*  computes the PAWN sensitivity analysis results from the CRPS values
+  - *run_PAWN_oneCluster_part1.R*  generates SIC samples with one cluster and compute the CRPS values
+  - *run_PAWN_oneCluster_part2.R*  computes the PAWN sensitivity analysis results from the CRPS values
+  - *run_PAWN_multiCluster_part1.R*  generates SIC samples with multiple clusters and compute the CRPS values
+  - *run_PAWN_multiCluster_part2.R*  computes the PAWN sensitivity analysis results from the CRPS values
 
-At the begining of each script set the parameters:
+At the begining of each script set up the values of experiment's parameters:
 - The choice in the environment variables **CASE0**, either *OCS* or *AGB* 
 - Number of iterations: **IT**
 - Number of observations: **NN**
@@ -35,6 +35,13 @@ At the begining of each script set the parameters:
   - **infolder** where the raw data are
   - **outfolder** where to store the samples
   - **resfolder** where to store the results
+
+**NOTE** The *CASE.list_NcYY.txt* files contains the list of cluster indices to reproduce the results for YY clusters.
+
+**OUTPUT** PAWN sensitivity measures and p-value of the KS test
+- SS.m,PP.m: for absolute error
+- SS.ca,PP.ca: for coverage indicator
+- SS.crps,PP.crps: for CRPS
 
 The necessary R packages are:
 - [ranger](https://doi.org/10.32614/CRAN.package.ranger) for training qRF models
