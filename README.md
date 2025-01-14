@@ -3,7 +3,7 @@
 This repository contains the R scripts for running the experiments for importance ranking of modelling factors in quantile random forest-based spatial predictions (qRF predictions) with Sparse, Imprecise, and CLustered observations (SIC).
 
 - [] **Step 1**: dowload the *AGB* and *OCS* datasets from [de Bruin et al., 2022](https://doi.org/10.5281/zenodo.6513429).
-- [] **Step 2**: unzip utils folder (with scripts for extraction and generation of the spatial data, SIC and random)
+- [] **Step 2**: unzip **utils** folder (with scripts for extraction and generation of the spatial data, SIC and random)
 - [] **Step 3**: set up subfolders for storing samples and results
 
 ____________________________________________________________________________
