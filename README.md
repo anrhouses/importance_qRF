@@ -33,7 +33,7 @@ At the begining of each script set up the values of experiment's parameters:
 - Number of observations within the clusters: **N**
 - The name of the folders:
   - **infolder** where the raw data are
-  - **outfolder** where to store the samples
+  - **outfolder** where to store the random samples
   - **resfolder** where to store the results
 
 **NOTE** The *CASE.list_NcYY.txt* files contains the list of cluster indices to reproduce the results for YY clusters.
