@@ -39,10 +39,10 @@ At the begining of each script set up the values of experiment's parameters:
 **NOTE** The *CASE.list_NcYY.txt* files contains the list of cluster indices to reproduce the results for YY clusters.
 
 **OUTPUT** PAWN sensitivity measures and p-value of the KS test
-- SS.m,PP.m: for absolute error
-- SS.ca,PP.ca: for coverage indicator
-- SS.crps,PP.crps: for CRPS
-
+- SS.crps: for CRPS
+- SS.is90: for interval score for prediction interval at 50%
+- SS.is90: for interval score for prediction interval at 90%
+  
 The necessary R packages are:
 - [ranger](https://doi.org/10.32614/CRAN.package.ranger) for training qRF models
 - [terra](https://doi.org/10.32614/CRAN.package.terra), [raster](https://doi.org/10.32614/CRAN.package.raster), and [sf](https://doi.org/10.32614/CRAN.package.sf) for processing the spatial datasets
