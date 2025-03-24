@@ -64,7 +64,7 @@ for (it in 1:IT){
 	load(paste0(nom,"_",1,".RData"))
 	nomS = paste0(resfolder,"RAND/FIXE_CLUST_N",NN,"_nc",N,"NumC_",Nc,"_CASE",CASE,"_RAND") ## name where store data
 
-SS.crps = SS.is50 = PP.is90 = matrix(0,nrow(df.te),ncol(XR))
+SS.crps = SS.is50 = SS.is90 = matrix(0,nrow(df.te),ncol(XR))
 
 for (ii in 1:nrow(df.te)){
 
