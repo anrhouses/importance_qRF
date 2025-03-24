@@ -65,7 +65,7 @@ nom = paste0(outfolder,"FIXE_CLUST_N",NN,"_nc",N,"NumC_",Nc,"_CASE",str)## name 
 load(paste0(nom,"_",1,".RData"))
 nomS = paste0(resfolder,"FIXE_CLUST_N",NN,"_nc",N,"NumC_",Nc,"_CASE",str)## name where store data
 
-SS.m = PP.m = SS.pi = PP.pi = SS.ca = PP.ca = SS.crps = PP.crps = matrix(0,nrow(df.te),ncol(XR))
+SS.crps = SS.is50 = SS.is90 = matrix(0,nrow(df.te),ncol(XR))
 
 for (ii in 1:nrow(df.te)){
 
@@ -88,49 +88,15 @@ for (ii in 1:nrow(df.te)){
 		}
 	}
 	CRPS = 2*apply(cov.pi,2,sum)*0.05
-	
-	## Accuracy plot
-	cov.pi = matrix(0,(length(qq)/2),nmc)
-	for (kk in 1:(length(qq)/2)){
-		lo = QQ[,ii,kk]
-		up = QQ[,ii,length(qq) - kk]
-		for (imc in 1:nmc) cov.pi[kk,imc] = CAfct(df.te$OCS[ii],lo[imc],up[imc])
-	}
-	CA = apply(cov.pi,2,mean)
 
-	### MEAN
-	df = data.frame(XR,y=AE)
-	for (j in 1:ncol(XR)){
-		ll = unique(df[,j])
-		SS0 = PVAL0 = NULL
-		for (i in 1:length(ll)){
-			ff = which(df[,j]==ll[i])
-			#plot(ecdf(df$y))
-			#lines(ecdf(df$y[ff]),col=2)
-			ks = ks.test(x=df$y[ff], y=df$y)
-			SS0[i] = ks$statistic
-			PVAL0[i] = ks$p.value
-		}
-		SS.m[ii,j] = median(SS0)
-		PP.m[ii,j] = median(PVAL0)
-	}
+	## PI 1,19 ou 5,15
+	Q1 = QQ[,ii,1]
+	Q3 = QQ[,ii,19]
+	IS90 = scoringutils:::interval_score(true_values=df.te$OCS[ii], lower=Q1,  upper=Q3,  interval_range=90)
 
-	### CA
-	df = data.frame(XR,y=CA)
-	for (j in 1:ncol(XR)){
-		ll = unique(df[,j])
-		SS0 = PVAL0 = NULL
-		for (i in 1:length(ll)){
-			ff = which(df[,j]==ll[i])
-			#plot(ecdf(df$y))
-			#lines(ecdf(df$y[ff]),col=2)
-			ks = ks.test(x=df$y[ff], y=df$y)
-			SS0[i] = ks$statistic
-			PVAL0[i] = ks$p.value
-		}
-		SS.ca[ii,j] = median(SS0)
-		PP.ca[ii,j] = median(PVAL0)
-	}
+	Q1 = QQ[,ii,5]
+	Q3 = QQ[,ii,15]
+	IS50 = scoringutils:::interval_score(true_values=df.te$OCS[ii], lower=Q1,  upper=Q3,  interval_range=50)
 
 	### CRPS
 	df = data.frame(XR,y=CRPS)
@@ -141,17 +107,48 @@ for (ii in 1:nrow(df.te)){
 		for (i in 1:length(ll)){
 			ff = which(df[,j]==ll[i])
 			#lines(ecdf(df$y[ff]),col=2)
-			ks = ks.test(x=df$y[ff], y=df$y)
+			ks = ks.test(x=df$y[ff], y=df$y,alternative="g")
 			SS0[i] = ks$statistic
 			PVAL0[i] = ks$p.value
 		}
-		SS.crps[ii,j] = median(SS0)
-		PP.crps[ii,j] = median(PVAL0)
+		SS.crps[ii,j] = max(SS0)
+	}
+
+	### IS50
+	df = data.frame(XR,y=IS50)
+	for (j in 1:ncol(XR)){
+		ll = unique(df[,j])
+		SS0 = PVAL0 = NULL
+		#plot(ecdf(df$y))			
+		for (i in 1:length(ll)){
+			ff = which(df[,j]==ll[i])
+			#lines(ecdf(df$y[ff]),col=2)
+			ks = ks.test(x=df$y[ff], y=df$y,alternative="g")
+			SS0[i] = ks$statistic
+			PVAL0[i] = ks$p.value
+		}
+		SS.is50[ii,j] = max(SS0)
+	}
+
+	### IS90
+	df = data.frame(XR,y=IS90)
+	for (j in 1:ncol(XR)){
+		ll = unique(df[,j])
+		SS0 = PVAL0 = NULL
+		#plot(ecdf(df$y))			
+		for (i in 1:length(ll)){
+			ff = which(df[,j]==ll[i])
+			#lines(ecdf(df$y[ff]),col=2)
+			ks = ks.test(x=df$y[ff], y=df$y,alternative="g")
+			SS0[i] = ks$statistic
+			PVAL0[i] = ks$p.value
+		}
+		SS.is90[ii,j] = max(SS0)
 	}
 
 }
 
-save(SS.m,PP.m,SS.ca,PP.ca,SS.crps,PP.crps,file=paste0(nomS,"PAWN_",1,"CRPS.RData"))##SAVE
+save(SS.crps,SS.is90,SS.is50,PP.crps,file=paste0(nomS,"PAWN_",1,"CRPS.RData"))##SAVE
 
 }##it
 
